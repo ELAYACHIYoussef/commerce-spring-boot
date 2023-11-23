@@ -51,21 +51,24 @@ public class ProductController {
         }
         return imageModels;
     }
-
+    @PreAuthorize("hasRole('Admin')")
     @GetMapping({"/getAllProduct"})
     public List<Product> getAllProduct(){
       return productService.getAllProduct();
     }
+    @PreAuthorize("hasRole('Admin')")
     @PutMapping({"/updateProduct/{productId}"})
     public Product updateProduct(@PathVariable Integer productId,@RequestBody Product product){
      return productService.updateProduct(productId,product);
     }
 
+    @PreAuthorize("hasRole('Admin')")
     @DeleteMapping({"/deletProductDetails/{productId}"})
     public void deletProductDetails(@PathVariable("productId") Integer productId){
         productService.deletProductDetail(productId);
     }
 
+    @PreAuthorize("hasRole('Admin')")
     @GetMapping({"/getProductById/{productId}"})
     public Product getProductById(@PathVariable("productId") Integer productId){
        return  productService.getProductById(productId);
