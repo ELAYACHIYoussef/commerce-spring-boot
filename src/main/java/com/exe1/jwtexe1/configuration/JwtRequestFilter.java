@@ -19,6 +19,8 @@ import java.io.IOException;
 
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
+   public static String CURRENT_USER="";
+
     @Autowired
     private JwtUtil jwtUtil;
     @Autowired
@@ -35,6 +37,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
             jwtToken = header.substring(7).trim(); // Correction pour supprimer les espaces
             try {
                 userName = jwtUtil.getUsernameFromToken(jwtToken);
+                CURRENT_USER=userName;
             } catch (IllegalArgumentException e) {
                 System.out.println("Unable to get JWT token");
             } catch (ExpiredJwtException e) {
