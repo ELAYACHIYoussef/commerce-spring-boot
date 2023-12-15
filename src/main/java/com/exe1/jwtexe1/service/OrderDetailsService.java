@@ -1,7 +1,7 @@
 package com.exe1.jwtexe1.service;
 
 import com.exe1.jwtexe1.configuration.JwtRequestFilter;
-import com.exe1.jwtexe1.dao.OrderRepository;
+import com.exe1.jwtexe1.dao.OrderDetailsRepository;
 import com.exe1.jwtexe1.dao.ProductDao;
 import com.exe1.jwtexe1.dao.UserDao;
 import com.exe1.jwtexe1.entity.*;
@@ -14,7 +14,7 @@ import java.util.List;
 public class OrderService {
     private static String ORDER_PLACED="Placed";
     @Autowired
-    private OrderRepository orderRepository;
+    private OrderDetailsRepository orderRepository;
     @Autowired
     private ProductDao productDao;
     @Autowired
@@ -25,7 +25,7 @@ public class OrderService {
            Product product= productDao.findById(o.getProductId()).get();
             String cuurent_user=JwtRequestFilter.CURRENT_USER;
             User user=userDao.findById(cuurent_user).get();
-           OrderDetails orderDetail=new OrderDetails(
+           OrderDetailsService orderDetail=new OrderDetailsService(
                     orderInput.getFullName(),
                     orderInput.getFullAdresse(),
                     orderInput.getContactNumber(),
