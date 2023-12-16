@@ -6,6 +6,7 @@ import com.exe1.jwtexe1.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,6 +46,21 @@ public class ProductService {
 
         // Retourne le produit mis à jour
         return updatedProduct1;
+    }
+
+    public List<Product> getProductDetails(boolean isSingleProductCheckout,Integer productId){
+        if(isSingleProductCheckout){
+
+
+            List<Product> list=new ArrayList<>();
+            Product product=productDao.findById(productId).get();
+            list.add(product);
+            return list;
+        }else{
+
+        }
+
+        return new ArrayList<>();
     }
 
 }

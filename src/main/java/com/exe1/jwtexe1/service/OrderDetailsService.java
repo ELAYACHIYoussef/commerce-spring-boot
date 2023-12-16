@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class OrderService {
+public class OrderDetailsService {
     private static String ORDER_PLACED="Placed";
     @Autowired
     private OrderDetailsRepository orderRepository;
@@ -25,7 +25,7 @@ public class OrderService {
            Product product= productDao.findById(o.getProductId()).get();
             String cuurent_user=JwtRequestFilter.CURRENT_USER;
             User user=userDao.findById(cuurent_user).get();
-           OrderDetailsService orderDetail=new OrderDetailsService(
+           OrderDetails orderDetail=new OrderDetails(
                     orderInput.getFullName(),
                     orderInput.getFullAdresse(),
                     orderInput.getContactNumber(),
