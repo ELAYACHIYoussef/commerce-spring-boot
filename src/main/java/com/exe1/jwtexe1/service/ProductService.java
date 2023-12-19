@@ -4,6 +4,8 @@ package com.exe1.jwtexe1.service;
 import com.exe1.jwtexe1.dao.ProductDao;
 import com.exe1.jwtexe1.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -22,7 +24,8 @@ public class ProductService {
     }
 
     public List<Product>getAllProduct(){
-        return (List<Product>) productDao.findAll();
+        Pageable pageable= PageRequest.of(0,10);
+        return (List<Product>) productDao.findAll(pageable);
     }
     public Product getProductById(Integer productId){
        return productDao.findById(productId).get();

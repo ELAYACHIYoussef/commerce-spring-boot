@@ -54,6 +54,7 @@ public class ProductController {
 
     @GetMapping({"/getAllProduct"})
     public List<Product> getAllProduct(){
+
       return productService.getAllProduct();
     }
     @PreAuthorize("hasRole('Admin')")
