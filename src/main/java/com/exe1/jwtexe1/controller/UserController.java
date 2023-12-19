@@ -20,12 +20,11 @@ public class UserController {
     public void initRolesAndUsers(){
         userService.initROlesAndUser();
     }
+
     @PostMapping({"/registerNewUser"})
     public User registerNewUser(@RequestBody User user){
-     return userService.registerNewUser(user);
+      return  userService.registerNewUser(user);
     }
-
-
 
     @GetMapping({"/forAdmin"})
     @PreAuthorize("hasRole('Admin')")
