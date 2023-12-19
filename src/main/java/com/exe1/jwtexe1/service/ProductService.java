@@ -23,8 +23,8 @@ public class ProductService {
         return product;
     }
 
-    public List<Product>getAllProduct(){
-        Pageable pageable= PageRequest.of(0,10);
+    public List<Product>getAllProduct(int pageNumber){
+        Pageable pageable= PageRequest.of(pageNumber,6);
         return (List<Product>) productDao.findAll(pageable);
     }
     public Product getProductById(Integer productId){

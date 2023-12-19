@@ -53,9 +53,9 @@ public class ProductController {
     }
 
     @GetMapping({"/getAllProduct"})
-    public List<Product> getAllProduct(){
+    public List<Product> getAllProduct(@RequestParam(defaultValue = "0") int pageNumber){
 
-      return productService.getAllProduct();
+      return productService.getAllProduct(pageNumber);
     }
     @PreAuthorize("hasRole('Admin')")
     @PutMapping({"/updateProduct/{productId}"})
