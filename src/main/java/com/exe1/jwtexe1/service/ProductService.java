@@ -24,11 +24,14 @@ public class ProductService {
     }
 
     public List<Product>getAllProduct(int pageNumber){
-        Pageable pageable= PageRequest.of(pageNumber,6);
+        Pageable pageable= PageRequest.of(pageNumber,12);
         return (List<Product>) productDao.findAll(pageable);
     }
+
+
     public Product getProductById(Integer productId){
-       return productDao.findById(productId).get();
+
+        return productDao.findById(productId).get();
     }
     public void deletProductDetail(Integer productId){
         productDao.deleteById(productId);
