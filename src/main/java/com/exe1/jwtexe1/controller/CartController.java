@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CartController {
 
@@ -25,6 +27,7 @@ public class CartController {
 
     @PreAuthorize("hasRole('User')")
     @GetMapping({"/getCartDetails"})
-    public void getCartDetails(){
+    public List<Cart> getCartDetails(){
+        return cartService.getCartDetails();
     }
 }
